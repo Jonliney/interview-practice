@@ -17,18 +17,6 @@ export default function App() {
   const [ingredients, setIngredients] = useState(initialIngredients);
   const [draftLine, setDraftLine] = useState("");
 
-  function addIngredient() {
-    if (!draftLine.trim()) {
-      return;
-    }
-
-    setIngredients([
-      ...ingredients,
-      { id: String(Date.now()), quantity: 1, unit: "", name: draftLine.trim() },
-    ]);
-    setDraftLine("");
-  }
-
   return (
     <main>
       <h1>Recipe Builder</h1>
@@ -48,7 +36,7 @@ export default function App() {
           onChange={(event) => setDraftLine(event.target.value)}
           placeholder="e.g. 2 tbsp olive oil"
         />
-        <button onClick={addIngredient}>Add ingredient</button>
+        <button type="button">Add ingredient</button>
       </div>
 
       <ul>

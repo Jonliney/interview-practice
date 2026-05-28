@@ -42,20 +42,8 @@ const initialTree: FolderNode = {
 };
 
 export default function App() {
-  const [tree, setTree] = useState<FolderNode>(initialTree);
+  const [tree] = useState<FolderNode>(initialTree);
   const [query, setQuery] = useState("");
-
-  function toggleFolder(id: string, node: Node = tree) {
-    if (node.id === id && node.kind === "folder") {
-      node.expanded = !node.expanded;
-      setTree({ ...tree });
-      return;
-    }
-
-    if (node.kind === "folder") {
-      node.children.forEach((child) => toggleFolder(id, child));
-    }
-  }
 
   function renderNode(node: Node, depth = 0): ReactNode {
     const paddingLeft = depth * 16;
@@ -70,11 +58,8 @@ export default function App() {
 
     return (
       <li key={node.id} style={{ paddingLeft }}>
-        <button onClick={() => toggleFolder(node.id)}>
-          {node.expanded ? "[-]" : "[+]"} {node.name}
-        </button>
-
-        {node.expanded ? <ul>{node.children.map((child) => renderNode(child, depth + 1))}</ul> : null}
+        <span>{node.name}</span>
+        <ul>{node.children.map((child) => renderNode(child, depth + 1))}</ul>
       </li>
     );
   }

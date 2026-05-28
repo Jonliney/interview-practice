@@ -1,28 +1,9 @@
-import { useEffect, useState } from "react";
-import { getQuote, type Quote } from "./api";
+import { useState } from "react";
 
 const symbols = ["AAPL", "MSFT", "TSLA"] as const;
 
 export default function App() {
   const [symbol, setSymbol] = useState<(typeof symbols)[number]>("AAPL");
-  const [quote, setQuote] = useState<Quote | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    getQuote(symbol)
-      .then((nextQuote) => {
-        setQuote(nextQuote);
-        setLoading(false);
-      })
-      .catch((nextError: Error) => {
-        setError(nextError.message);
-        setLoading(false);
-      });
-  }, [symbol]);
 
   return (
     <main>
@@ -36,16 +17,10 @@ export default function App() {
         ))}
       </div>
 
-      {loading ? <p>Loading...</p> : null}
-      {error ? <p>{error}</p> : null}
-
-      {quote ? (
-        <section>
-          <h2>{quote.symbol}</h2>
-          <p>Price: {quote.price}</p>
-          <p>Change: {quote.change}</p>
-        </section>
-      ) : null}
+      <section>
+        <h2>{symbol}</h2>
+        <p>Select a symbol and load the latest quote.</p>
+      </section>
     </main>
   );
 }

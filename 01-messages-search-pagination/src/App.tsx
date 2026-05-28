@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { getMessages, type Message } from "./api";
 
-const PAGE_SIZE = 5;
-
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [query, setQuery] = useState("");
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -16,8 +13,6 @@ export default function App() {
       setLoading(false);
     });
   }, []);
-
-  const visibleMessages = messages.slice(0, visibleCount);
 
   return (
     <main>
@@ -32,15 +27,13 @@ export default function App() {
       {loading ? <p>Loading...</p> : null}
 
       <ul>
-        {visibleMessages.map((message) => (
+        {messages.map((message) => (
           <li key={message.id}>
             <strong>{message.name}</strong>
             <div>{message.participants.join(", ")}</div>
           </li>
         ))}
       </ul>
-
-      <button onClick={() => setVisibleCount(visibleCount + PAGE_SIZE)}>Load more</button>
     </main>
   );
 }

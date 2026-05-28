@@ -39,18 +39,6 @@ export default function App() {
   const [selectedSlotId, setSelectedSlotId] = useState("s1");
   const [bookings, setBookings] = useState<Booking[]>([]);
 
-  function createBooking() {
-    if (!candidate.trim()) {
-      return;
-    }
-
-    setBookings([
-      ...bookings,
-      { id: String(Date.now()), candidate: candidate.trim(), slotId: selectedSlotId },
-    ]);
-    setCandidate("");
-  }
-
   return (
     <main>
       <h1>Interview Scheduler</h1>
@@ -70,7 +58,7 @@ export default function App() {
           ))}
         </select>
 
-        <button onClick={createBooking}>Book</button>
+        <button type="button">Book</button>
       </div>
 
       <ul>

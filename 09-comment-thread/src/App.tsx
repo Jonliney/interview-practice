@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { createReply, type Comment } from "./api";
+import type { Comment } from "./api";
 
 const initialComments: Comment[] = [
   {
@@ -24,30 +24,8 @@ const initialComments: Comment[] = [
 ];
 
 export default function App() {
-  const [comments, setComments] = useState(initialComments);
+  const [comments] = useState(initialComments);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
-
-  async function handleReply(parentId: string) {
-    const message = drafts[parentId]?.trim();
-
-    if (!message) {
-      return;
-    }
-
-    const nextReply = await createReply(parentId, message);
-    setComments(addReply(comments, parentId, nextReply));
-    setDrafts({ ...drafts, [parentId]: "" });
-  }
-
-  function addReply(nodes: Comment[], parentId: string, reply: Comment): Comment[] {
-    return nodes.map((node) => {
-      if (node.id === parentId) {
-        return { ...node, children: [...node.children, reply] };
-      }
-
-      return { ...node, children: addReply(node.children, parentId, reply) };
-    });
-  }
 
   function renderComments(nodes: Comment[]): ReactNode {
     return (
@@ -65,7 +43,7 @@ export default function App() {
               }
               placeholder="Write a reply"
             />
-            <button onClick={() => void handleReply(comment.id)}>Reply</button>
+            <button type="button">Reply</button>
 
             {renderComments(comment.children)}
           </li>

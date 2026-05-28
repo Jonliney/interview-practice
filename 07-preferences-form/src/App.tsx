@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { savePreferences, type Preferences } from "./api";
+import type { Preferences } from "./api";
 
 const savedPreferences: Preferences = {
   email: "candidate@example.com",
@@ -9,14 +9,9 @@ const savedPreferences: Preferences = {
 
 export default function App() {
   const [form, setForm] = useState(savedPreferences);
-  const [status, setStatus] = useState("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("saving");
-
-    await savePreferences(form);
-    setStatus("saved");
   }
 
   return (
@@ -56,7 +51,6 @@ export default function App() {
         </label>
 
         <button type="submit">Save</button>
-        <p>Status: {status}</p>
       </form>
     </main>
   );

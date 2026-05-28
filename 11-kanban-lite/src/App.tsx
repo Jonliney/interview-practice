@@ -20,18 +20,7 @@ const initialBoard: Board = {
 };
 
 export default function App() {
-  const [board, setBoard] = useState<Board>(initialBoard);
-
-  function moveTask(taskId: string, from: ColumnId, to: ColumnId) {
-    const task = board[from].find((item) => item.id === taskId);
-    if (!task) {
-      return;
-    }
-
-    board[from] = board[from].filter((item) => item.id !== taskId);
-    board[to].push(task);
-    setBoard({ ...board });
-  }
+  const [board] = useState<Board>(initialBoard);
 
   return (
     <main>
@@ -46,17 +35,6 @@ export default function App() {
               {board[columnId].map((task) => (
                 <li key={task.id}>
                   {task.title} (P{task.priority})
-                  <div>
-                    {columnId !== "todo" ? (
-                      <button onClick={() => moveTask(task.id, columnId, "todo")}>To todo</button>
-                    ) : null}
-                    {columnId !== "doing" ? (
-                      <button onClick={() => moveTask(task.id, columnId, "doing")}>To doing</button>
-                    ) : null}
-                    {columnId !== "done" ? (
-                      <button onClick={() => moveTask(task.id, columnId, "done")}>To done</button>
-                    ) : null}
-                  </div>
                 </li>
               ))}
             </ul>

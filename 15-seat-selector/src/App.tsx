@@ -18,16 +18,7 @@ const seats: Seat[] = [
 ];
 
 export default function App() {
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
-
-  function toggleSeat(id: string) {
-    if (selectedIds.includes(id)) {
-      setSelectedIds(selectedIds.filter((item) => item !== id));
-      return;
-    }
-
-    setSelectedIds([...selectedIds, id]);
-  }
+  const [selectedIds] = useState<string[]>([]);
 
   return (
     <main>
@@ -38,7 +29,6 @@ export default function App() {
           <button
             key={seat.id}
             disabled={seat.booked}
-            onClick={() => toggleSeat(seat.id)}
             style={{
               padding: 12,
               background: selectedIds.includes(seat.id) ? "gold" : "white",

@@ -23,7 +23,6 @@ export default function App() {
         {days.map((day) => (
           <li key={day}>
             <button
-              disabled={bookedDays.has(day)}
               onClick={() => setSelectedDay(day)}
               style={{ fontWeight: selectedDay === day ? "bold" : "normal" }}
             >

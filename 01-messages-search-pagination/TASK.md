@@ -8,12 +8,12 @@ The UI renders:
 
 - a search box at the top
 - a list of messages
-- a `Load more` button at the bottom
+- space for pagination controls at the bottom
 
 Implement:
 
 1. Search with a partial, case-insensitive match against both `name` and `participants`.
-2. Pagination or load-more behavior in the UI.
+2. Pagination or load-more behavior in the UI, including the button itself if you choose that approach.
 3. Reset the visible item count when the search term changes.
 4. Reasonable loading and empty states.
 

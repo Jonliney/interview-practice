@@ -13,25 +13,10 @@ const initialDocuments: Document[] = [
 ];
 
 export default function App() {
-  const [documents, setDocuments] = useState(initialDocuments);
-  const [activeId, setActiveId] = useState("d1");
+  const [documents] = useState(initialDocuments);
   const [draftBody, setDraftBody] = useState(initialDocuments[0].body);
 
-  const activeDocument = documents.find((document) => document.id === activeId) ?? documents[0];
-
-  function handleTabClick(nextId: string) {
-    setActiveId(nextId);
-    const nextDocument = documents.find((document) => document.id === nextId);
-    setDraftBody(nextDocument?.body ?? "");
-  }
-
-  function handleSave() {
-    setDocuments(
-      documents.map((document) =>
-        document.id === activeId ? { ...document, body: draftBody } : document,
-      ),
-    );
-  }
+  const activeDocument = documents[0];
 
   return (
     <main>
@@ -39,9 +24,7 @@ export default function App() {
 
       <div role="tablist" aria-label="Documents">
         {documents.map((document) => (
-          <button key={document.id} onClick={() => handleTabClick(document.id)}>
-            {document.title}
-          </button>
+          <span key={document.id}>{document.title}</span>
         ))}
       </div>
 
@@ -53,8 +36,6 @@ export default function App() {
           onChange={(event) => setDraftBody(event.target.value)}
         />
       </section>
-
-      <button onClick={handleSave}>Save</button>
     </main>
   );
 }

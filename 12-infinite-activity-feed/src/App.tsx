@@ -1,18 +1,8 @@
 import { useState } from "react";
-import { getFeedPage, type FeedItem } from "./api";
-
-const PAGE_SIZE = 3;
+import type { FeedItem } from "./api";
 
 export default function App() {
-  const [page, setPage] = useState(0);
   const [items, setItems] = useState<FeedItem[]>([]);
-
-  async function loadMore() {
-    const nextPage = page + 1;
-    const nextItems = await getFeedPage(nextPage, PAGE_SIZE);
-    setItems([...items, ...nextItems]);
-    setPage(nextPage);
-  }
 
   return (
     <main>
@@ -25,8 +15,7 @@ export default function App() {
           </li>
         ))}
       </ul>
-
-      <button onClick={() => void loadMore()}>Load more</button>
+      <button onClick={() => setItems(items)}>Load more</button>
     </main>
   );
 }
