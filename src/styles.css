@@ -1,0 +1,231 @@
+:root {
+  color: #e7e5e4;
+  background:
+    radial-gradient(circle at top left, rgba(251, 191, 36, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(45, 212, 191, 0.14), transparent 30%),
+    linear-gradient(180deg, #111827 0%, #0b1020 100%);
+  font-family:
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "Book Antiqua",
+    Palatino,
+    Georgia,
+    serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+input,
+select,
+textarea,
+table {
+  border-radius: 10px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.page {
+  width: min(1120px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.hero-card,
+.surface {
+  border: 1px solid rgba(231, 229, 228, 0.14);
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.hero-card {
+  padding: 28px;
+  border-radius: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.hero-title,
+.task-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  line-height: 0.95;
+}
+
+.hero-copy,
+.task-copy {
+  max-width: 70ch;
+  margin: 0;
+  color: rgba(231, 229, 228, 0.82);
+}
+
+.tasks-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.task-card {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 18px;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.task-card:hover,
+.task-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(251, 191, 36, 0.48);
+  background: rgba(30, 41, 59, 0.92);
+}
+
+.task-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: rgba(231, 229, 228, 0.72);
+  font-size: 0.92rem;
+}
+
+.task-shell {
+  display: grid;
+  gap: 20px;
+}
+
+.task-header {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 22px;
+}
+
+.task-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.task-link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid rgba(231, 229, 228, 0.18);
+  background: rgba(17, 24, 39, 0.66);
+}
+
+.task-link:hover,
+.task-link:focus-visible {
+  border-color: rgba(45, 212, 191, 0.48);
+}
+
+.task-app {
+  padding: 24px;
+  border-radius: 22px;
+}
+
+.missing {
+  padding: 24px;
+  border-radius: 22px;
+}
+
+.app-frame {
+  color: #111827;
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.app-frame main {
+  display: grid;
+  gap: 16px;
+}
+
+.app-frame ul {
+  padding-left: 20px;
+}
+
+.app-frame table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.app-frame th,
+.app-frame td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.app-frame button,
+.app-frame input,
+.app-frame select,
+.app-frame textarea {
+  border: 1px solid #cbd5e1;
+  padding: 8px 10px;
+  background: white;
+}
+
+.app-frame button {
+  cursor: pointer;
+}
+
+.app-frame button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+  .page {
+    width: min(100vw - 20px, 1120px);
+    padding-top: 20px;
+  }
+
+  .hero-card,
+  .task-header,
+  .task-app,
+  .missing {
+    padding: 18px;
+  }
+}

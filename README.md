@@ -2,17 +2,48 @@
 
 This pack contains 20 self-contained interview exercises.
 
+It is now a runnable Vite workspace with shared tooling and per-task entry pages.
+
 Each task has:
 
 - `TASK.md`: the prompt, feature list, and interview notes
 - `src/`: starter React + TypeScript code
+- `index.html`: a direct entry page for that task
+
+## Running the pack
+
+From the pack root:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Then open:
+
+- `/` for the task list
+- `/<task-folder>/` for a specific exercise
+
+Examples:
+
+- `/01-messages-search-pagination/`
+- `/12-infinite-activity-feed/`
+- `/20-market-watch/`
+
+The shared workspace uses:
+
+- one root `package.json`
+- one root Vite config
+- one shared task shell and stylesheet
+- dynamic loading of each task's `src/App.tsx`
 
 Recommended way to use this pack:
 
 1. Pick a numbered folder.
 2. Create a worktree or branch for that exercise.
-3. Implement the requested features, and refactor the starter code where needed.
-4. Talk through tradeoffs, data flow, typing, testing strategy, and edge cases.
+3. Run the shared dev server and open that folder's path in the browser.
+4. Implement the requested features, and refactor the starter code where needed.
+5. Talk through tradeoffs, data flow, typing, testing strategy, and edge cases.
 
 Task list:
 
