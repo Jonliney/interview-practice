@@ -22,10 +22,19 @@ export default function App() {
     <main>
       <h1>Notifications</h1>
 
+      <div>
+        <button type="button">All</button>
+        <button type="button">Unread</button>
+        <button type="button">Mark all as read</button>
+      </div>
+
       <ul>
         {items.map((item) => (
           <li key={item.id}>
             <span>{item.read ? "Read" : "Unread"}</span> - {item.message}
+            <div>
+              <button type="button">Mark as read</button>
+            </div>
           </li>
         ))}
       </ul>

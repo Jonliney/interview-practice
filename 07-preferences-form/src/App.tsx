@@ -50,7 +50,10 @@ export default function App() {
           />
         </label>
 
-        <button type="submit">Save</button>
+        <div>
+          <button type="submit">Save</button>
+          <button type="button">Reset</button>
+        </div>
       </form>
     </main>
   );

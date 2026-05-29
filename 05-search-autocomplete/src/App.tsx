@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
-import { searchCities } from "./api";
+import { useState } from "react";
 
 export default function App() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (!query) {
-      setResults([]);
-      return;
-    }
-
-    searchCities(query)
-      .then((items) => {
-        setResults(items);
-      })
-      .catch(() => setResults([]));
-  }, [query]);
 
   return (
     <main>
@@ -27,6 +13,8 @@ export default function App() {
         onChange={(event) => setQuery(event.target.value)}
         placeholder="Start typing a city"
       />
+
+      <p>Results will appear below.</p>
 
       <ul>
         {results.map((result) => (

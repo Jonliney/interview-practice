@@ -36,6 +36,11 @@ export default function App() {
           onChange={(event) => setDraftBody(event.target.value)}
         />
       </section>
+
+      <div>
+        <button type="button">Save</button>
+        <button type="button">Reset</button>
+      </div>
     </main>
   );
 }

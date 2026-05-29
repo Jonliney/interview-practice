@@ -36,7 +36,9 @@ export default function App() {
 
       {(Object.keys(modules) as ModuleName[]).map((moduleName) => (
         <section key={moduleName}>
-          <h2>{moduleName}</h2>
+          <label style={{ display: "block", marginBottom: 8 }}>
+            <input type="checkbox" checked={false} readOnly /> {moduleName}
+          </label>
 
           {(modules[moduleName] as readonly ActionName[]).map((actionName) => {
             const key = `${moduleName}.${actionName}` as PermissionKey;
@@ -55,6 +57,7 @@ export default function App() {
         </section>
       ))}
 
+      <button type="button">Save permissions</button>
       <pre>{JSON.stringify(permissions, null, 2)}</pre>
     </main>
   );

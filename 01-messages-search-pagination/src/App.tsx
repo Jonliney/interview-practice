@@ -4,13 +4,10 @@ import { getMessages, type Message } from "./api";
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [query, setQuery] = useState("");
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     getMessages().then((nextMessages) => {
       setMessages(nextMessages);
-      setLoading(false);
     });
   }, []);
 
@@ -24,8 +21,6 @@ export default function App() {
         placeholder="Search messages"
       />
 
-      {loading ? <p>Loading...</p> : null}
-
       <ul>
         {messages.map((message) => (
           <li key={message.id}>
@@ -34,6 +29,8 @@ export default function App() {
           </li>
         ))}
       </ul>
+
+      <button type="button">Load more</button>
     </main>
   );
 }

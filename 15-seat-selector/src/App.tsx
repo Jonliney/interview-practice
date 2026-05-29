@@ -39,6 +39,8 @@ export default function App() {
         ))}
       </div>
 
+      <p>Seat limit: 4</p>
+      <p>Total price: $0</p>
       <p>Selected seats: {selectedIds.join(", ") || "none"}</p>
     </main>
   );

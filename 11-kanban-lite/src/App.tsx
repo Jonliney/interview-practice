@@ -21,20 +21,35 @@ const initialBoard: Board = {
 
 export default function App() {
   const [board] = useState<Board>(initialBoard);
+  const [draftTitle, setDraftTitle] = useState("");
 
   return (
     <main>
       <h1>Kanban Lite</h1>
 
+      <div>
+        <input
+          value={draftTitle}
+          onChange={(event) => setDraftTitle(event.target.value)}
+          placeholder="Add a new task"
+        />
+        <button type="button">Add task</button>
+        <button type="button">Sort by priority</button>
+      </div>
+
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
         {(Object.keys(board) as ColumnId[]).map((columnId) => (
           <section key={columnId}>
             <h2>{columnId}</h2>
+            {columnId === "doing" ? <p>WIP limit: 2</p> : null}
 
             <ul>
               {board[columnId].map((task) => (
                 <li key={task.id}>
                   {task.title} (P{task.priority})
+                  <div>
+                    <button type="button">Move</button>
+                  </div>
                 </li>
               ))}
             </ul>

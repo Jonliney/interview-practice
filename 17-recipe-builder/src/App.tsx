@@ -43,6 +43,10 @@ export default function App() {
         {ingredients.map((ingredient) => (
           <li key={ingredient.id}>
             {ingredient.quantity} {ingredient.unit} {ingredient.name}
+            <div>
+              <button type="button">Edit</button>
+              <button type="button">Remove</button>
+            </div>
           </li>
         ))}
       </ul>

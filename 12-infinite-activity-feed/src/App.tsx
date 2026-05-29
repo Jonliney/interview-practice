@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { FeedItem } from "./api";
 
 export default function App() {
-  const [items, setItems] = useState<FeedItem[]>([]);
+  const [items] = useState<FeedItem[]>([]);
 
   return (
     <main>
@@ -15,7 +15,7 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <button onClick={() => setItems(items)}>Load more</button>
+      <button type="button">Load more</button>
     </main>
   );
 }

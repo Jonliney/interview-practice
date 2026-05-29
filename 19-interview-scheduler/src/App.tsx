@@ -34,10 +34,14 @@ const slots: Slot[] = [
   },
 ];
 
+const initialBookings: Booking[] = [
+  { id: "b1", candidate: "Jordan Reed", slotId: "s3" },
+];
+
 export default function App() {
   const [candidate, setCandidate] = useState("");
   const [selectedSlotId, setSelectedSlotId] = useState("s1");
-  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookings] = useState<Booking[]>(initialBookings);
 
   return (
     <main>
@@ -65,6 +69,10 @@ export default function App() {
         {bookings.map((booking) => (
           <li key={booking.id}>
             {booking.candidate} - {booking.slotId}
+            <div>
+              <button type="button">Edit</button>
+              <button type="button">Cancel</button>
+            </div>
           </li>
         ))}
       </ul>

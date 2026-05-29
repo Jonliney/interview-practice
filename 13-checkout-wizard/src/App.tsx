@@ -24,8 +24,6 @@ export default function App() {
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState(initialForm);
 
-  const total = form.itemCount + form.itemPrice;
-
   return (
     <main>
       <h1>Checkout</h1>
@@ -78,13 +76,14 @@ export default function App() {
             onChange={(event) => setForm({ ...form, itemPrice: event.target.value })}
             placeholder="Item price"
           />
-          <p>Total: {total}</p>
+          <p>Order summary and total will appear here.</p>
         </section>
       ) : null}
 
       <div>
         <button onClick={() => setStep(Math.max(1, step - 1) as Step)}>Back</button>
         <button onClick={() => setStep(Math.min(3, step + 1) as Step)}>Next</button>
+        <button type="button">Save draft</button>
       </div>
     </main>
   );

@@ -51,14 +51,15 @@ export default function App() {
     if (node.kind === "file") {
       return (
         <li key={node.id} style={{ paddingLeft }}>
-          {node.name}
+          <span>{node.name}</span> <button type="button">Rename</button>
         </li>
       );
     }
 
     return (
       <li key={node.id} style={{ paddingLeft }}>
-        <span>{node.name}</span>
+        <button type="button">[+]</button> <span>{node.name}</span>{" "}
+        <button type="button">Rename</button>
         <ul>{node.children.map((child) => renderNode(child, depth + 1))}</ul>
       </li>
     );

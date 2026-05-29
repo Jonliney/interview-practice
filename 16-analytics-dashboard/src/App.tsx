@@ -21,6 +21,8 @@ export default function App() {
           <option value="design">Design</option>
           <option value="product">Product</option>
         </select>
+
+        <button type="button">Retry</button>
       </div>
       <section>
         <p>Select filters and load the dashboard data.</p>

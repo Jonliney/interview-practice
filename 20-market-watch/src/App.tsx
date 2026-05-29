@@ -15,6 +15,7 @@ export default function App() {
             {item}
           </button>
         ))}
+        <button type="button">Retry</button>
       </div>
 
       <section>

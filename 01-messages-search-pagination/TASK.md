@@ -8,7 +8,7 @@ The UI renders:
 
 - a search box at the top
 - a list of messages
-- space for pagination controls at the bottom
+- a `Load more` button at the bottom
 
 Implement:
 

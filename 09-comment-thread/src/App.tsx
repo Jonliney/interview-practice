@@ -36,6 +36,8 @@ export default function App() {
               <strong>{comment.author}</strong>: {comment.message}
             </p>
 
+            <button type="button">Collapse thread</button>
+
             <input
               value={drafts[comment.id] ?? ""}
               onChange={(event) =>
